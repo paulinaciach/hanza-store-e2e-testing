@@ -6,8 +6,12 @@ describe('Register', () => {
     const strongPassword = 'hhjhjfferfgerq34343';
     const baseURL = 'https://hanzastore.pl/moje-konto/';
 
+
+    beforeEach(() => {
+      cy.visit('/moje-konto/');
+    });
+
     it('Register with valid data', () => {
-        cy.visit('https://hanzastore.pl/moje-konto/');
         cy.get('#reg_email').type(correctEmail);
         cy.get('#reg_password').type(strongPassword);
         cy.get('button[type=submit]')
@@ -20,7 +24,6 @@ describe('Register', () => {
       });
 
     it('Register with inavlid emial', () => {
-      cy.visit('https://hanzastore.pl/moje-konto/');
       cy.get('#reg_email').type(incorrectEmail);
       cy.get('#reg_password').type(strongPassword);
       cy.get('button[type=submit]')
@@ -33,7 +36,6 @@ describe('Register', () => {
     });
 
     it('Register with invalid password', ()=>{
-        cy.visit('https://hanzastore.pl/moje-konto/');
         cy.get('#reg_email').type(correctEmail);
         cy.get('#reg_password').type(weakPassword);
         cy.get('button[type=submit]')
@@ -41,7 +43,6 @@ describe('Register', () => {
     });
 
     it('Register with existing user', () => {
-        cy.visit('https://hanzastore.pl/moje-konto/');
         cy.get('#reg_email').type(correctEmail);
         cy.get('#reg_password').type(strongPassword);
         cy.get('button[type=submit]')

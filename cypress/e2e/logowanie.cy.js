@@ -6,8 +6,12 @@ describe('Logowanie', () => {
     const strongPassword = 'hhjhjfferfgerq34343';
     const baseURL = 'https://hanzastore.pl/moje-konto/';
 
+    beforeEach(() => {
+        cy.visit('/moje-konto');
+      });
+
     it('Log in with valid data', () => {
-      cy.visit('https://hanzastore.pl/moje-konto/');
+
       cy.get('#username').type(correctEmail);
       cy.get('#password').type(strongPassword);
       cy.get('button[type=submit]')
@@ -19,9 +23,17 @@ describe('Logowanie', () => {
 
     });
 
-    
+    it('Log in with no data', () => {
+        cy.get('button[type=submit]')
+          .contains('Zaloguj się')
+          .click()
+          .url()
+          .should('eq', baseURL);
+          cy.get('li').contains('Nazwa użytkownika jest wymagana.')
+  
+      });
+  
     it('Log in with invalid email', () => {
-        cy.visit('https://hanzastore.pl/moje-konto/');
         cy.get('#username').type(incorrectEmail);
         cy.get('#password').type(strongPassword);
         cy.get('button[type=submit]')
@@ -33,7 +45,6 @@ describe('Logowanie', () => {
       });
 
       it('Log in with invalid password for email', () => {
-        cy.visit('https://hanzastore.pl/moje-konto/');
         cy.get('#username').type(correctEmail);
         cy.get('#password').type(weakPassword);
         cy.get('button[type=submit]')
@@ -46,7 +57,6 @@ describe('Logowanie', () => {
 
       
       it('Log in with invalid password for user', () => {
-        cy.visit('https://hanzastore.pl/moje-konto/');
         cy.get('#username').type(userName);
         cy.get('#password').type(weakPassword);
         cy.get('button[type=submit]')
