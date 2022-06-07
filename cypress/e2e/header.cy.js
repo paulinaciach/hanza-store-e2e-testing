@@ -14,17 +14,11 @@ describe('Register', () => {
         .should('eq', baseURL )
     })
 
-    it('Search bar type', () =>{
+    it('Search bar ', () =>{
         cy.get('[id="dgwt-wcas-search-input-1"]')
         .should('have.class', 'dgwt-wcas-search-input')
-        .type('Test typing...')
-        .click()
-
     })
 
-    it('Search bar 2', ()=>{
-        cy.get('input:first').should('have.attr', 'placeholder', 'Szukaj produktów')
-    })
 
     
     it('Click on HanzaStore, returns base url', ()=>{
