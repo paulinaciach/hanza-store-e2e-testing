@@ -1,4 +1,4 @@
-describe('Register', () => {
+describe('Header', () => {
 
     const baseURL = 'https://hanzastore.pl/';
 

@@ -1,4 +1,4 @@
-describe("Footer test", () => {
+describe("Footer", () => {
   const baseURL = "https://hanzastore.pl/";
 
   beforeEach(() => {

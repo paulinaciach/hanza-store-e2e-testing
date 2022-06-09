@@ -1,4 +1,4 @@
-describe('Logowanie', () => {
+describe('Login', () => {
     const incorrectEmail = 'jhdvchdsh';
     const correctEmail = 'user23211@gmail.com';
     const userName = 'user23211';
