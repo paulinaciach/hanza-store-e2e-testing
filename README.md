@@ -56,7 +56,8 @@ Testy pokrywaja 6 sekcji, każda sekcja od 2 do 7 przypadków testowych, łaczni
           .click()
           .url()
           .should('eq', baseURL);
-           cy.get('li').contains('Wprowadzone hasło dla użytkownika '+userName+' jest niepoprawne.');
+           cy.get('li')
+           .contains('Wprowadzone hasło dla użytkownika '+userName+' jest niepoprawne.');
       });
 
 ```
